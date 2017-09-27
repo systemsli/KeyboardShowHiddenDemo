@@ -1,34 +1,37 @@
 //
-//  InputViewController.m
+//  PushOneViewController.m
 //  KeyboardDemo
 //
-//  Created by 李小龙 on 2017/3/6.
+//  Created by admin on 2017/9/20.
 //  Copyright © 2017年 李小龙. All rights reserved.
 //
 
-#import "InputViewController.h"
+#import "PushOneViewController.h"
 #import "LXLKeyboardManagerHeader.h"
 
-@interface InputViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface PushOneViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *oneTF;
+@property (weak, nonatomic) IBOutlet UITextField *twoTF;
 
 @end
 
-@implementation InputViewController
+@implementation PushOneViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.navigationBar.translucent = YES;
     self.lxl_addKeyboardObserver = YES;
-    
+    _oneTF.lxl_bottomOffSetKeyboardTop = 100;
+    _twoTF.lxl_bottomOffSetKeyboardTop = 50;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)dis:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
+
 
 /*
 #pragma mark - Navigation
@@ -39,20 +42,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
-    
-    return cell;
-}
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

@@ -1,33 +1,31 @@
 //
-//  InputViewController.m
+//  PushTwoViewController.m
 //  KeyboardDemo
 //
-//  Created by 李小龙 on 2017/3/6.
+//  Created by admin on 2017/9/20.
 //  Copyright © 2017年 李小龙. All rights reserved.
 //
 
-#import "InputViewController.h"
-#import "LXLKeyboardManagerHeader.h"
+#import "PushTwoViewController.h"
+#import "UIViewController+LXLExtension.h"
 
-@interface InputViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface PushTwoViewController ()
 
 @end
 
-@implementation InputViewController
+@implementation PushTwoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.navigationBar.translucent = NO;
     self.lxl_addKeyboardObserver = YES;
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)dis:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
@@ -40,23 +38,8 @@
 }
 */
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
-    
-    return cell;
-}
-
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
-
 
 @end
