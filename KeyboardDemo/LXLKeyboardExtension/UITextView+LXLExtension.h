@@ -15,6 +15,6 @@
  界面销毁时，自动移除键盘监听通知，并结束本界面的编辑状态。设置值时必须大于等于0
  键盘回收需各界面自己处理
  */
-@property (nonatomic, assign) CGFloat lxl_bottomOffSetKeyboardTop;
+@property (nonatomic, assign) CGFloat lxl_tvBottomOffSetKeyboardTop;
 
 @end

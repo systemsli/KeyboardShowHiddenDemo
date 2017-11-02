@@ -22,8 +22,8 @@
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.translucent = YES;
     self.lxl_addKeyboardObserver = YES;
-    _oneTF.lxl_bottomOffSetKeyboardTop = 100;
-    _twoTF.lxl_bottomOffSetKeyboardTop = 50;
+    _oneTF.lxl_tfBottomOffSetKeyboardTop = 100;
+    _twoTF.lxl_tfBottomOffSetKeyboardTop = 50;
 }
 
 - (void)didReceiveMemoryWarning {

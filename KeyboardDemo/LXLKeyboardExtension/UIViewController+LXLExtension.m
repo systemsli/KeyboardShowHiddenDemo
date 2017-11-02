@@ -236,12 +236,12 @@ NSInteger lxl_lastKayboardType;
     }
     if([responderView isKindOfClass:[UITextView class]]) {
         UITextView *textView = (UITextView *)responderView;
-        textViewBottomOffSetKeyboardY = textView.lxl_bottomOffSetKeyboardTop;
+        textViewBottomOffSetKeyboardY = textView.lxl_tvBottomOffSetKeyboardTop;
         viewOffSetY = [self p_firstResponderViewOffSetY:responderView];
 
     } else if ([responderView isKindOfClass:[UITextField class]]) {
         UITextField *textField = (UITextField *)responderView;
-        textViewBottomOffSetKeyboardY = textField.lxl_bottomOffSetKeyboardTop;
+        textViewBottomOffSetKeyboardY = textField.lxl_tfBottomOffSetKeyboardTop;
         viewOffSetY = [self p_firstResponderViewOffSetY:responderView];
 
     }
@@ -304,6 +304,7 @@ NSInteger lxl_lastKayboardType;
     double animationTimes = [noti.userInfo[@"UIKeyboardAnimationDurationUserInfoKey"] doubleValue];
     [self p_animationWithTime:animationTimes offSetY:self.lxl_vcDataModel.vcViewInitialY];
     
+    self.lxl_editingView = nil;
 }
 
 - (void)lxl_clickEndEdit {
