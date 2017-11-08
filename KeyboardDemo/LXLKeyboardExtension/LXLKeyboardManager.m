@@ -94,15 +94,18 @@
 
     _sendKeybaordNoti = YES;
     _lxl_lastKeyboardShowNoti = noti;
+
+    if(!_monitoredVC) {
+        _monitoredVC = [UIViewController currentShowController];
+    }
+
     if(!self.lxl_vcDataModel.saveVCViewInitialY) { //第一次推出键盘时记录VC view的初始位置
-//        NSLog(@"lxl_isInitVCViewY %d", self.lxl_vcDataModel.saveVCViewInitialY);
+//        NSLog(@"lxl_isInitVCViewY %f", _monitoredVC.view.frame.origin.y);
         self.lxl_vcDataModel.vcViewInitialY = _monitoredVC.view.frame.origin.y;
         self.lxl_vcDataModel.saveVCViewInitialY = YES;
         
     }
-    if(!_monitoredVC) {
-        _monitoredVC = [UIViewController currentShowController];
-    }
+
 
     [self p_handelShowKeyboardNofi:noti];
 }
@@ -124,7 +127,7 @@
 
     _lxl_lastKeyboardShowNoti = nil;
     double animationTimes = [noti.userInfo[@"UIKeyboardAnimationDurationUserInfoKey"] doubleValue];
-    [self p_animationWithTime:animationTimes offSetY:self.lxl_vcDataModel.vcViewInitialY];
+    [self p_animationWithTime:animationTimes offSetY: self.lxl_vcDataModel.vcViewInitialY];
     
     self.lxl_editingView = nil;
 }
@@ -136,12 +139,7 @@
     CGFloat viewBottomDistanceVCViewBottom = 0;
     CGFloat textViewBottomOffSetKeyboardY = -1000;
     
-//    UIView *responderView;
-//    if(self.lxl_editingView) {
-//        responderView = self.lxl_editingView;
-//    } else {
-//        responderView = [_monitoredVC.view lxlFirstResponder];
-//    }
+
     if([_lxl_editingView isKindOfClass:[UITextView class]]) {
         UITextView *textView = (UITextView *)_lxl_editingView;
         textViewBottomOffSetKeyboardY = textView.lxl_editingViewBottomDistanceKeyboardTop;
@@ -191,6 +189,7 @@
     if(_delegate && [_delegate respondsToSelector:@selector(editingVCViewYPosition:animationTime:)]) {
         [_delegate editingVCViewYPosition:offY animationTime:duration];
     }
+//    NSLog(@"offY:%f ", offY);
 }
 
 

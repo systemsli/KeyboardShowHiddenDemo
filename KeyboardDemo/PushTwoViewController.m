@@ -48,6 +48,7 @@
 - (void)editingVCViewYPosition:(CGFloat)viewYPosition animationTime:(NSTimeInterval)animationTime {
     [UIView animateWithDuration:animationTime animations:^{
         CGRect frame = self.view.frame;
+//        NSLog(@"frame y:%f", frame.origin.y);
         frame.origin.y = viewYPosition;
         self.view.frame = frame;
     }];

@@ -35,6 +35,27 @@
 - (void)testExample {
     // Use recording to get started writing UI tests.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    XCUIApplication *app = [[XCUIApplication alloc] init];
+    [app.buttons[@"Push"] tap];
+    [app.buttons[@"64"] tap];
+    
+    XCUIElement *element2 = [[[app childrenMatchingType:XCUIElementTypeWindow] elementBoundByIndex:0] childrenMatchingType:XCUIElementTypeOther].element;
+    XCUIElement *element = [[[[element2 childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element;
+    [[element childrenMatchingType:XCUIElementTypeTextField].element tap];
+    [element2 tap];
+    [app.navigationBars[@"PushTwoView"].buttons[@"Back"] tap];
+    [app.buttons[@"0"] tap];
+    
+    XCUIElement *textField = [[element childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0];
+    [textField tap];
+    [textField typeText:@"d"];
+    [[[element childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:1] tap];
+    [[[element childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:2] tap];
+    [element2 tap];
+    [app.navigationBars[@"PushOneView"].buttons[@"Back"] tap];
+    
+
 }
 
 @end
