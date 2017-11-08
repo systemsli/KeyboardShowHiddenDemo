@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		313D89AC1FB34BF40013E532 /* LXLKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 313D89AA1FB34BF30013E532 /* LXLKeyboardManager.m */; };
 		3179E9A91E6CFBCD00CB00EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3179E9A81E6CFBCD00CB00EB /* main.m */; };
 		3179E9AC1E6CFBCD00CB00EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3179E9AB1E6CFBCD00CB00EB /* AppDelegate.m */; };
 		3179E9AF1E6CFBCD00CB00EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3179E9AE1E6CFBCD00CB00EB /* ViewController.m */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		313D89AA1FB34BF30013E532 /* LXLKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXLKeyboardManager.m; sourceTree = "<group>"; };
+		313D89AB1FB34BF30013E532 /* LXLKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXLKeyboardManager.h; sourceTree = "<group>"; };
 		3179E9A41E6CFBCD00CB00EB /* KeyboardDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3179E9A81E6CFBCD00CB00EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3179E9AA1E6CFBCD00CB00EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 		3179E9F51E6D4F6A00CB00EB /* LXLKeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
+				313D89AB1FB34BF30013E532 /* LXLKeyboardManager.h */,
+				313D89AA1FB34BF30013E532 /* LXLKeyboardManager.m */,
 				31AAC4851F7BF6F900DEB712 /* LXLControllerDataModel.h */,
 				31AAC4891F7BF6F900DEB712 /* LXLControllerDataModel.m */,
 				31AAC4871F7BF6F900DEB712 /* LXLKeyboardManagerHeader.h */,
@@ -334,6 +339,7 @@
 				3179E9A91E6CFBCD00CB00EB /* main.m in Sources */,
 				3179E9FE1E6D53F000CB00EB /* UIView+LXLFirstResponder.m in Sources */,
 				3179E9DC1E6CFC4800CB00EB /* InputViewController.m in Sources */,
+				313D89AC1FB34BF40013E532 /* LXLKeyboardManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

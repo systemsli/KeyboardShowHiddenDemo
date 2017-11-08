@@ -10,8 +10,7 @@
 
 @interface LXLControllerDataModel : NSObject
 
-@property (nonatomic, assign) BOOL saveVCViewInitialY;
+@property (nonatomic, assign) BOOL saveVCViewInitialY;//是否已经保存当前VC view的初始位置
 @property (nonatomic, assign) CGFloat vcViewInitialY;
-@property (nonatomic, strong) UIColor *endEditintViewBkColor;
 
 @end

@@ -9,6 +9,7 @@
 #ifndef LXLKeyboardManagerHeader_h
 #define LXLKeyboardManagerHeader_h
 
+#import "LXLKeyboardManager.h"
 #import "UIViewController+LXLExtension.h"
 #import "UITextField+LXLExtension.h"
 #import "UITextView+LXLExtension.h"

@@ -15,7 +15,6 @@
     if(self) {
         _vcViewInitialY = 0.0;
         _saveVCViewInitialY = NO;
-        _endEditintViewBkColor = [UIColor clearColor];
     }
     return self;
 }

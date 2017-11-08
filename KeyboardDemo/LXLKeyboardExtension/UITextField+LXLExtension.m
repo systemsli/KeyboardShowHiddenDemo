@@ -9,23 +9,22 @@
 #import "UITextField+LXLExtension.h"
 #import <objc/runtime.h>
 
-static const char *lxl_tfBottomOffSetKeyboardTopKey = "lxl_tfBottomOffSetKeyboardTop";
-
 @implementation UITextField (LXLExtension)
 
-
-- (void)setLxl_tfBottomOffSetKeyboardTop:(CGFloat)lxl_tfBottomOffSetKeyboardTop {
-    NSNumber *number = [NSNumber numberWithFloat:lxl_tfBottomOffSetKeyboardTop];
-    objc_setAssociatedObject(self, lxl_tfBottomOffSetKeyboardTopKey, number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setLxl_editingViewBottomDistanceKeyboardTop:(CGFloat)lxl_editingViewBottomDistanceKeyboardTop {
+    NSNumber *number = [NSNumber numberWithFloat:lxl_editingViewBottomDistanceKeyboardTop];
+    objc_setAssociatedObject(self, @selector(lxl_editingViewBottomDistanceKeyboardTop), number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGFloat)lxl_tfBottomOffSetKeyboardTop {
-    NSNumber *number = objc_getAssociatedObject(self, lxl_tfBottomOffSetKeyboardTopKey);
-    if(number == nil) {
-        return -1000;
+
+- (CGFloat)lxl_editingViewBottomDistanceKeyboardTop {
+    
+    NSNumber *number = objc_getAssociatedObject(self, @selector(lxl_editingViewBottomDistanceKeyboardTop));
+    if(number) {
+        return number ? number.floatValue : 0.0;
+    } else {
+        return -1000.0;
     }
-    CGFloat offset = number.floatValue <= 0.0 ? 0.0 : number.floatValue;
-    return offset;
 }
 
 

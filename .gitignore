@@ -17,7 +17,7 @@ xcuserdata/
 *.xcuserstate
 project.xcworkspace
 xcuserdata
-UserInterfaceState.xcuserstate
+*UserInterfaceState.xcuserstate
 project.xcworkspace/
 xcuserdata/
 UserInterface.xcuserstate 
@@ -27,6 +27,7 @@ UserInterface.xcuserstate
 *.xccheckout
 *.xcscmblueprint
 ##.gitignore
+*.DS_Store
 
 
 ## Obj-C/Swift specific

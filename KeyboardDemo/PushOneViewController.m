@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *oneTF;
 @property (weak, nonatomic) IBOutlet UITextField *twoTF;
 
+@property (nonatomic, strong) LXLKeyboardManager *keyboardManager;
+
 @end
 
 @implementation PushOneViewController
@@ -21,9 +23,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.translucent = YES;
-    self.lxl_addKeyboardObserver = YES;
-    _oneTF.lxl_tfBottomOffSetKeyboardTop = 100;
-    _twoTF.lxl_tfBottomOffSetKeyboardTop = 50;
+//    self.lxl_editingViewBottomDistanceKeyboardTop = YES;
+    _oneTF.lxl_editingViewBottomDistanceKeyboardTop = 100;
+    _twoTF.lxl_editingViewBottomDistanceKeyboardTop = 50;
+
+    _keyboardManager = [[LXLKeyboardManager alloc] init];
+    //    _keyboardManager.monitoredVC = self;
+    __weak typeof(self) weakSelf = self;
+    _keyboardManager.offsetBlock = ^(double animationTime, CGFloat yPosition) {
+        NSLog(@"%f   %f", animationTime, yPosition);
+        [weakSelf p_animationWithTime:animationTime offSetY:yPosition];
+    };
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,5 +58,12 @@
     [self.view endEditing:YES];
 }
 
+- (void)p_animationWithTime:(NSTimeInterval)duration offSetY:(CGFloat)offY {
+    [UIView animateWithDuration:duration animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = offY;
+        self.view.frame = frame;
+    }];
+}
 
 @end

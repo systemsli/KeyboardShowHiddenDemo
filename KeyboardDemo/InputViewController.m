@@ -9,7 +9,9 @@
 #import "InputViewController.h"
 #import "LXLKeyboardManagerHeader.h"
 
-@interface InputViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface InputViewController ()<UITableViewDelegate, UITableViewDataSource, LXLKeyboardManagerDelegate>
+
+@property (nonatomic, strong) LXLKeyboardManager *keyboardManager;
 
 @end
 
@@ -18,7 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.lxl_addKeyboardObserver = YES;
+    //    self.lxl_addKeyboardObserver = YES;
+    _keyboardManager = [[LXLKeyboardManager alloc] init];
+    //    _keyboardManager.monitoredVC = self;
+    _keyboardManager.delegate = self;
     
 }
 
@@ -58,5 +63,12 @@
     [self.view endEditing:YES];
 }
 
+- (void)editingVCViewYPosition:(CGFloat)viewYPosition animationTime:(NSTimeInterval)animationTime {
+    [UIView animateWithDuration:animationTime animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = viewYPosition;
+        self.view.frame = frame;
+    }];
+}
 
 @end

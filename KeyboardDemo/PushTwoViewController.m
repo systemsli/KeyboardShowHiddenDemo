@@ -7,11 +7,11 @@
 //
 
 #import "PushTwoViewController.h"
-#import "UIViewController+LXLExtension.h"
+#import "LXLKeyboardManagerHeader.h"
 
 
-@interface PushTwoViewController ()
-
+@interface PushTwoViewController ()<LXLKeyboardManagerDelegate>
+@property (nonatomic, strong) LXLKeyboardManager *keyboardManager;
 @end
 
 @implementation PushTwoViewController
@@ -20,7 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.translucent = NO;
-    self.lxl_addKeyboardObserver = YES;
+    //    self.lxl_addKeyboardObserver = YES;
+    _keyboardManager = [[LXLKeyboardManager alloc] init];
+    //    _keyboardManager.monitoredVC = self;
+    _keyboardManager.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +43,14 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+- (void)editingVCViewYPosition:(CGFloat)viewYPosition animationTime:(NSTimeInterval)animationTime {
+    [UIView animateWithDuration:animationTime animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = viewYPosition;
+        self.view.frame = frame;
+    }];
 }
 
 @end
