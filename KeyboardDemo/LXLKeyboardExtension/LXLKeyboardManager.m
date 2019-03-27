@@ -183,14 +183,26 @@
 
 
 - (void)p_animationWithTime:(NSTimeInterval)duration offSetY:(CGFloat)offY {
+    if(_monitoredVC) {
+        [self p_monitoredVCAnimationWithTime:duration offSetY:offY];
+    }
     if(_offsetBlock) {
         _offsetBlock(duration, offY);
     }
     if(_delegate && [_delegate respondsToSelector:@selector(editingVCViewYPosition:animationTime:)]) {
         [_delegate editingVCViewYPosition:offY animationTime:duration];
     }
-//    NSLog(@"offY:%f ", offY);
 }
 
+#pragma mark --- 被监听的VC View开始动画
+- (void)p_monitoredVCAnimationWithTime:(NSTimeInterval)duration offSetY:(CGFloat)offY {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:duration animations:^{
+            CGRect frame = _monitoredVC.view.frame;
+            frame.origin.y = offY;
+            _monitoredVC.view.frame = frame;
+        }];
+    });
+}
 
 @end
